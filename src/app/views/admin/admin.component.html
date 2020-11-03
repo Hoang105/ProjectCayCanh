@@ -1,0 +1,122 @@
+<div class="content-box">
+    <div class="breadcrumb-box">
+        <ul class="breadcrumb">
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Quản lý người dùng</a></li>
+          </ul>
+    </div>
+    <div class="table">
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <th class="">
+                        Họ
+                    </th>
+                    <th class="">
+                        Tên
+                    </th>
+                    <th class="">
+                        Vai trò
+                    </th>
+                    <th class="">
+                        Tên đăng nhập
+                    </th>
+                    <th class="">   
+                        <button class="btn btn-primary btn-add" (click)="open(content)"><i class="fa fa-plus"></i></button>
+                    </th>
+                </thead>
+                <ng-container *ngFor="let user of users| slice:Paging.Take*(Paging.active-1):Paging.Take*Paging.active">
+                    <tbody>
+                        <td>
+                            {{user.firstName}}
+                        </td>
+                        <td>
+                            {{user.lastName}}
+                        </td>
+                        <td>
+                            {{user.role}}
+                        </td>
+                        <td>
+                            {{user.username}}
+                        </td>
+                        <td>
+                            <button class="btn btn-warning"><i class="fa fa-pencil-square-o">
+                            </i></button>
+                            <button class="btn btn-danger"><i class="fa fa-trash-o">
+                            </i></button>
+                        </td>
+                    </tbody>
+                </ng-container>
+            </table>
+        </div>
+        <app-paging [(Page)]="Paging" [totalData]="count" (onChange)='getUser($event)' [linkRoute]="'/default/admin'"></app-paging>
+    </div>
+</div>
+<ng-template #content let-modal> 
+    <div class="modal-header"> 
+        <h4 class="modal-title" 
+            id="modal-basic-title"> 
+            Thêm người dùng mới 
+        </h4> 
+        <button type="button" class="close"
+                aria-label="Close" (click)= 
+                "modal.dismiss('Cross click')"> 
+            <span aria-hidden="true"> 
+                × 
+            </span> 
+        </button> 
+    </div> 
+    <div class="modal-body"> 
+        <form> 
+            <div class="form-group"> 
+                <label> 
+                    Họ: 
+                </label> 
+                <div class="input-group"> 
+                    <input type="text" class="form-control" [(ngModel)]="userAdd.firstName" name="firstName">
+                </div>
+                <label> 
+                    Tên: 
+                </label> 
+                <div class="input-group"> 
+                    <input type="text" class="form-control" [(ngModel)]="userAdd.lastName" name="lastName">
+                </div>
+                <label> 
+                    Chọn vai trò: 
+                </label> 
+                <div class="input-group"> 
+                    <select class="form-control" (change)="selectOption($event.target.value)">
+                        <option value="User">User</option>
+                        <option value="Admin">Admin</option>
+                    </select>
+                    <!-- <input type="text" class="form-control" [(ngModel)]="user.role" name="role"> -->
+                </div>
+                <label> 
+                    Nhập tên đăng nhập: 
+                </label> 
+                <div class="input-group"> 
+                    <input type="text" class="form-control" [(ngModel)]="userAdd.username" name="username">
+                </div> 
+                <label> 
+                    Nhập password: 
+                </label> 
+                <div class="input-group"> 
+                    <input type="password" class="form-control" [(ngModel)]="userAdd.password" name="password">
+                </div> 
+                <label> 
+                    Nhập lại password: 
+                </label> 
+                <div class="input-group"> 
+                    <input type="password" class="form-control" [(ngModel)]="userAdd.password"  name="password1">
+                </div> 
+            </div> 
+        </form> 
+    </div> 
+    <div class="modal-footer"> 
+        <button type="button" 
+            class="btn btn-outline-dark" 
+            (click)="modal.close('Save click')"> 
+            Save 
+        </button> 
+    </div> 
+</ng-template>

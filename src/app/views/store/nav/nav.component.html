@@ -1,0 +1,127 @@
+<div style="background-color: #ffffff;">
+    <div class="container header">
+        <div class="header-logo">
+            <div class="logo">
+                <a href="#">            
+                    <img class="img-logo" src="../../../../assets/dbcaycanh/img/logo-cay-canh-viet.jpg">
+                </a>
+            </div>
+            <div class="filter-header">
+                <div>
+                    <input class="form-control input-filter" type="text" placeholder="từ khóa">
+                </div>
+                <div class="filter-icon">
+                    <a>                
+                        <i class="fa fa-search"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="cart">
+                <div class="btn-cart">
+                    <a class="btn btn-warning"><i class="fa fa-shopping-cart"></i></a>
+                </div>
+                <div class="cart-calculator">
+                    Giỏ hàng: total
+                </div>
+            </div>
+        </div>
+      </div>
+    <div class="header-menu">
+    <div class="main container">
+        <nav class="navbar navbar-expand-lg navbar-light nav-bar">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav m-auto">
+                    <li class="nav-item">
+                        <a class="nav-link item-name" href="/">TRANG CHỦ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link item-name" [routerLink]="['/home/info']">GIỚI THIỆU</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link item-name"[routerLink]="['/home/new']">TIN TỨC</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link item-name dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            CÁCH CHĂM SÓC
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link item-name" href="#">BẢN ĐỒ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link item-name" href="#">LIÊN HỆ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link item-name" href="#">CHÍNH SÁCH</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link item-name"><i class="fa fa-shopping-cart" style="margin-right: 0.5rem;"></i>GIỎ HÀNG</a>
+                    </li>
+                </ul>
+            </div>
+            </nav>
+    </div>
+    </div>
+    <router-outlet></router-outlet>
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="contact-name">
+                        Công ty TNHH Bảo Lâm
+                    </div>
+                    <div class="contact-footer">
+                        <div class="contact-footer-name">
+                            <i class="fa fa-home"></i>Văn phòng:
+                        </div>
+                        <div class="contact-footer-user">
+                            <i class="fa fa-user"></i>Người đại diện:
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="contact-name">
+                        Địa chỉ bán buôn bán lẻ
+                    </div>
+                    <div class="contact-footer">
+                        <div class="local-contact">
+                            Tại chi nhánh Hà Nội
+                        </div>
+                        <div class="info-contact">
+                            <div>                        
+                                Số 60 - Ngõ 235
+                                Yên Hòa - Quận Cầu Giấy - Hà Nội
+                            </div>
+                            <div>
+                                ĐT: 0988 833 653
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="nav-right category">
+                        <div class="contact-name">
+                            Danh mục cây cảnh
+                        </div>
+                        <div class="list-nav-right">
+                            <ul class="list-menu-nav">
+                                <li class="li-list-menu-nav" *ngFor="let nav of nav_right">
+                                    <a class="btn-list-menu-nav"><i class="fa fa-tree icon-tree"></i>{{nav.item}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

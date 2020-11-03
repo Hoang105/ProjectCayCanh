@@ -1,0 +1,129 @@
+<div class="content-box">
+    <div class="breadcrumb-box">
+        <ul class="breadcrumb">
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Quản lý Khách hàng</a></li>
+          </ul>
+    </div>
+    <div class="table">
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <th class="">   
+                        <button class="btn btn-primary btn-add" (click)="open('',content)"><i class="fa fa-plus"></i></button>
+                    </th>
+                    <th class="">
+                        Tên
+                    </th>
+                    <th class="">
+                        Địa chỉ
+                    </th>
+                    <th class="">
+                        Email
+                    </th>
+                    <th class="">
+                        Số điện thoại
+                    </th>
+                </thead>
+                <ng-container *ngFor="let client of clients| slice:Paging.Take*(Paging.active-1):Paging.Take*Paging.active">
+                    <tbody>
+                        <td>
+                            <button class="btn btn-warning" (click)="editClient(client,content)"><i class="fa fa-pencil-square-o"></i></button>
+                            <button class="btn btn-danger"
+                            mwlConfirmationPopover
+                                [popoverTitle]=""  
+                                [popoverMessage]="'Bạn có muốn xóa không?'" 
+                                [confirmText]="'Có'" 
+                                [cancelText]="'Không'" 
+                                placement="left" 
+                                (confirm)="confirmClicked = true;deletebyId(client)"  
+                                (cancel)="cancelClicked = true" 
+                                confirmButtonType="danger" 
+                                cancelButtonType="defang-containert" 
+                                (click)="confirmClicked = false; cancelClicked = false"><i class="fa fa-trash-o"></i></button>
+                        </td>
+                        <td>
+                            {{client.client_name}}
+                        </td>
+                        <td>
+                            {{client.client_address}}
+                        </td>
+                        <td>
+                            {{client.client_email}}
+                        </td>
+                        <td>
+                            {{client.client_phone}}
+                        </td>
+                    </tbody>
+                </ng-container>
+            </table>
+        </div>
+        <div class="paging">
+            <app-paging [(Page)]="Paging" [totalData]="count" (onChange)='getUser($event)' [linkRoute]="'/default/client'"></app-paging>
+        </div>
+    </div>
+</div>
+<ng-template #content let-modal> 
+    <div class="modal-header"> 
+        <h4 class="modal-title" 
+            id="modal-basic-title"> 
+            Thêm người dùng mới 
+        </h4> 
+        <button type="button" class="close"
+                aria-label="Close" (click)= 
+                "modal.dismiss('Cross click')"> 
+            <span aria-hidden="true"> 
+                × 
+            </span> 
+        </button> 
+    </div> 
+    <div class="modal-body"> 
+        <form> 
+            <div class="form-group"> 
+                <label> 
+                    Nhập tên: 
+                </label> 
+                <div class="input-group"> 
+                    <input type="text" class="form-control" [(ngModel)]="Addclient.client_name" name="client_name">
+                </div>
+                <label> 
+                    Nhập địa chỉ: 
+                </label> 
+                <div class="input-group"> 
+                    <input type="text" class="form-control" [(ngModel)]="Addclient.client_address" name="client_address">
+                </div>
+                <label> 
+                    Nhập email: 
+                </label> 
+                <div class="input-group"> 
+                    <input type="text" class="form-control" [(ngModel)]="Addclient.client_email" name="client_email">
+                </div>
+                <label> 
+                    Nhập số điện thoại: 
+                </label> 
+                <div class="input-group"> 
+                    <input type="text" class="form-control" [(ngModel)]="Addclient.client_phone" name="client_phone">
+                </div> 
+                <label> 
+                    Nhập password: 
+                </label> 
+                <div class="input-group"> 
+                    <input type="password" class="form-control" [(ngModel)]="Addclient.client_password" name="password">
+                </div> 
+                <label> 
+                    Nhập lại password: 
+                </label> 
+                <div class="input-group"> 
+                    <input type="password" class="form-control" [(ngModel)]="Addclient.client_password"  name="password1">
+                </div> 
+            </div> 
+        </form> 
+    </div> 
+    <div class="modal-footer"> 
+        <button type="button" 
+            class="btn btn-outline-dark" 
+            (click)="modal.close('Save click')"> 
+            Save 
+        </button> 
+    </div> 
+</ng-template>
